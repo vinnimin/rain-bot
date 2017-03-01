@@ -1,15 +1,17 @@
-module.exports = function() {
-    var fs = require('fs');
-    var url = 'https://gamdom.com/crash'
+exports.require = function(link) {
     var request = require('request');
     var now = new Date;
-    request(url, function (error, response, html) {
-        result = {
+    var codeHtml = 1;
+    var result = {
         date : now.toString()
-        , site : url
-        , html : html
+        , site : link
+        //, html : html
         };
-        console.log(result.html);
-        fs.writeFile('resultado.json', JSON.stringify(result, null, 3), function(err) {});
-    })
+    request(link,codeHtml, function (error, response, html) {
+    console.log(codeHtml+1);
+        //fs.writeFile('resultado.json', JSON.stringify(result, null, 3), function(err) {});
+    });
+    
+    
+    return result
 }
